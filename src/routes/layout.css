@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+
+body,
+html {
+	margin: 0;
+	overflow: hidden;
+	background: black;
+}
+
+@font-face {
+	font-family: 'beefd';
+	src: url($lib/assets/fonts/beefd.ttf) format('truetype');
+	/* Tells browser to use fallback, then swap cleanly */
+	font-display: swap;
+	font-style: normal;
+	font-weight: 500;
+}
+
+/* Metal ------------------------- */
+
+.metal {
+	outline: none;
+	text-align: center;
+	color: hsla(0, 0%, 20%, 1);
+	text-shadow:
+		hsla(0, 0%, 40%, 0.5) 0 -1px 0,
+		hsla(0, 0%, 100%, 0.6) 0 2px 1px;
+
+	background-color: hsl(0, 0%, 90%);
+
+	transition: color 0.2s;
+}
+
+button {
+	font-family: 'beefd';
+	font-size: 16px;
+}
+
+/* Linear ------------------------- */
+
+.metal.linear {
+	/* width: 100px;
+		font-size: 4em;
+		height: 80px;
+		border-radius: 0.5em; */
+	background-image:
+		-webkit-repeating-linear-gradient(left,
+			hsla(0, 0%, 100%, 0) 0%,
+			hsla(0, 0%, 100%, 0) 6%,
+			hsla(0, 0%, 100%, 0.1) 7.5%),
+		-webkit-repeating-linear-gradient(left,
+			hsla(0, 0%, 0%, 0) 0%,
+			hsla(0, 0%, 0%, 0) 4%,
+			hsla(0, 0%, 0%, 0.03) 4.5%),
+		-webkit-repeating-linear-gradient(left,
+			hsla(0, 0%, 100%, 0) 0%,
+			hsla(0, 0%, 100%, 0) 1.2%,
+			hsla(0, 0%, 100%, 0.15) 2.2%),
+		linear-gradient(180deg,
+			hsl(0, 0%, 78%) 0%,
+			hsl(0, 0%, 90%) 47%,
+			hsl(0, 0%, 78%) 53%,
+			hsl(0, 0%, 70%) 100%);
+}
+
+/* if window is too small then we display a disclaimer */
+
+#resolution-disclaimer {
+	display: none;
+}
+
+/* The @media CSS at-rule can be used to apply part of a style sheet based on the result of 
+one or more media queries. With it, you specify a media query and a block of CSS to apply
+to the document if and only if the media query matches the device on which the content is being used */
+
+@media (max-width: 1024px) or (max-height: 768px) {
+	#resolution-disclaimer {
+		z-index: 10000;
+		display: block;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100vw;
+		background: rgba(108, 196, 23, 0.50);
+	}
+
+	#disclaimer-wrapper {
+		width: 95vw;
+		margin: 20px auto;
+		color: #fff;
+	}
+}
